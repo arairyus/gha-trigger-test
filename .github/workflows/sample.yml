@@ -1,0 +1,21 @@
+name: 'Sample'
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - v*
+    paths:
+      - 'src/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - name: test
+        run: |
+          echo "Event: ${{ github.event_name }}"
